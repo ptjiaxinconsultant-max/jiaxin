@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Jiaxin Consultant | Strategic & Financial Business Advisory</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            DEFAULT: '#0B0C10',
+                            deep: '#060709',
+                            card: '#12141C',
+                            border: '#1E2230'
+                        },
+                        gold: {
+                            DEFAULT: '#D4AF37',
+                            light: '#F3E5AB',
+                            dark: '#A38118',
+                            rose: '#C5A880'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        cn: ['"Noto Serif SC"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Glassmorphism & Effects */
+        .glass-panel {
+            background: rgba(18, 20, 28, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+        .glass-nav {
+            background: rgba(11, 12, 16, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF6D0 0%, #D4AF37 45%, #AA820A 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-border {
+            border-image: linear-gradient(135deg, #D4AF37, rgba(212, 175, 55, 0.2)) 1;
+        }
+        .gold-glow {
+            box-shadow: 0 0 35px -5px rgba(212, 175, 55, 0.22);
+        }
+        .gold-button {
+            background: linear-gradient(135deg, #D4AF37 0%, #B58F22 100%);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .gold-button:hover {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+            transform: translateY(-2px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0C10;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1C202C;
+            border-radius: 4px;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-slate-300 font-sans antialiased selection:bg-gold selection:text-obsidian overflow-x-hidden">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-22 flex items-center justify-between py-4">
+            
+            <!-- Logo Perusahaan (Mudah diganti dengan <img>) -->
+            <a href="#" class="flex items-center gap-3.5 group">
+                <!-- Placeholder SVG Icon Logo (Ganti div ini dengan <img src="logo.png" class="h-10"> jika punya logo sendiri) -->
+                <img src="bg perusahaan.jpg" alt="PT Jiaxin Consultant Logo" class="h-10 w-auto object-contain">
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-lg sm:text-xl text-white tracking-widest uppercase leading-tight">PT JIAXIN</span>
+                    <span class="text-[10px] text-gold tracking-[0.3em] uppercase font-semibold">Consultant</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs lg:text-sm font-medium tracking-wide">
+                <a href="#about" class="hover:text-gold transition-colors" data-i18n="nav-about">Tentang Kami</a>
+                <a href="#services" class="hover:text-gold transition-colors" data-i18n="nav-services">Layanan</a>
+                <a href="#why-us" class="hover:text-gold transition-colors" data-i18n="nav-why">Keunggulan</a>
+                <a href="#calculator" class="hover:text-gold transition-colors" data-i18n="nav-calculator">Kesiapan Bisnis</a>
+                <a href="#testimonials" class="hover:text-gold transition-colors" data-i18n="nav-testimonials">Testimoni</a>
+            </nav>
+
+            <!-- Language Switcher & CTA -->
+            <div class="hidden md:flex items-center gap-5">
+                <!-- Dual Language Button -->
+                <button id="lang-toggle-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/30 bg-obsidian-card hover:border-gold text-xs font-semibold text-gold transition-all">
+                    <i data-lucide="globe" class="w-3.5 h-3.5"></i>
+                    <span id="lang-label">ID | 中文</span>
+                </button>
+
+                
+            </div>
+
+            <!-- Mobile Menu Switcher & Toggle -->
+            <div class="flex items-center gap-3 md:hidden">
+                <button id="lang-toggle-mobile" class="px-2.5 py-1 rounded-full border border-gold/40 text-[11px] font-bold text-gold bg-obsidian-card">
+                    ID/中文
+                </button>
+                <button id="mobile-menu-btn" class="text-slate-200 hover:text-gold focus:outline-none p-1">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-gold/20 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-slate-200 hover:text-gold py-1.5 font-medium" data-i18n="nav-about">Tentang Kami</a>
+            <a href="#services" class="block text-slate-200 hover:text-gold py-1.5 font-medium" data-i18n="nav-services">Layanan</a>
+            <a href="#why-us" class="block text-slate-200 hover:text-gold py-1.5 font-medium" data-i18n="nav-why">Keunggulan</a>
+            <a href="#calculator" class="block text-slate-200 hover:text-gold py-1.5 font-medium" data-i18n="nav-calculator">Kesiapan Bisnis</a>
+            <a href="#testimonials" class="block text-slate-200 hover:text-gold py-1.5 font-medium" data-i18n="nav-testimonials">Testimoni</a>
+            
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <!-- 1. HERO SECTION -->
+        <section class="relative min-h-[92vh] flex items-center justify-center overflow-hidden py-20 px-6">
+            <!-- Background Glow Effects -->
+            <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/10 rounded-full blur-[150px] pointer-events-none"></div>
+            <div class="absolute bottom-10 -right-20 w-[350px] h-[350px] bg-amber-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-12 items-center relative z-10">
+                <div class="md:col-span-7 space-y-8 text-left">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-panel border-gold/30">
+                        <span class="w-2.5 h-2.5 rounded-full bg-gold animate-pulse"></span>
+                        <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="hero-badge">PT JIAXIN CONSULTANT • STRATEGIC ADVISORY</span>
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-[1.25]">
+                        <span data-i18n="hero-title-1">Arah Strategis Berkelas untuk</span> <br>
+                        <span class="gold-gradient-text" data-i18n="hero-title-2">Akselerasi & Kepemimpinan Pasar</span>
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl leading-relaxed font-light" data-i18n="hero-desc">
+                        PT Jiaxin Consultant menghadirkan pendampingan penasihat strategis kelas atas untuk korporasi, investor eksekutif, dan ekspansi lintas negara. Kami merancang presisi pertumbuhan dan mitigasi risiko komprehensif.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-3">
+                        
+                            
+                        </a>
+                        <a href="#services" class="glass-panel text-white hover:text-gold font-semibold text-sm px-9 py-4 rounded-xl flex items-center justify-center gap-2 border border-slate-900 hover:border-gold/50 transition-all">
+                            <span data-i18n="hero-btn-secondary">Jelajahi Layanan</span>
+                        </a>
+                    </div>
+
+                    <!-- Highlight Metrics -->
+                    <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-serif font-bold text-white">Rp 15T+</div>
+                            <div class="text-xs text-slate-400 mt-1" data-i18n="stat-1">Restrukturisasi Aset</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-serif font-bold text-white">99.2%</div>
+                            <div class="text-xs text-slate-400 mt-1" data-i18n="stat-2">Tingkat Kepuasan Klien</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-serif font-bold text-white">18+ Thn</div>
+                            <div class="text-xs text-slate-400 mt-1" data-i18n="stat-3">Pengalaman Lintas Negara</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Graphic Preview -->
+                <div class="md:col-span-5">
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-gold/30 via-gold-dark/20 to-amber-700/20 rounded-3xl blur-xl"></div>
+                        <div class="relative glass-panel rounded-3xl p-6 sm:p-8 space-y-6 gold-glow border-gold/30">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/40 flex items-center justify-center text-gold">
+                                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-white font-medium text-sm">Strategic Readiness Index</div>
+                                        <div class="text-xs text-slate-400">Verified Corporate Standard</div>
+                                    </div>
+                                </div>
+                                <span class="text-xs bg-emerald-500/10 text-emerald-400 px-3 py-1 rounded-full font-semibold border border-emerald-500/30">AAA Grade</span>
+                            </div>
+
+                            <!-- Interactive Index Bar Graphic -->
+                            <div class="space-y-4 pt-2">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5">
+                                        <span class="text-slate-300">Tata Kelola & Kepatuhan GCG</span>
+                                        <span class="text-gold font-bold">96%</span>
+                                    </div>
+                                    <div class="w-full bg-obsidian-deep rounded-full h-2.5 border border-slate-800">
+                                        <div class="bg-gradient-to-r from-gold-dark to-gold h-2.5 rounded-full w-[96%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5">
+                                        <span class="text-slate-300">Navigasi Regulasi & Pasar Asia/China</span>
+                                        <span class="text-gold font-bold">92%</span>
+                                    </div>
+                                    <div class="w-full bg-obsidian-deep rounded-full h-2.5 border border-slate-800">
+                                        <div class="bg-gradient-to-r from-gold-dark to-gold h-2.5 rounded-full w-[92%]"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1.5">
+                                        <span class="text-slate-300"> Ketahanan Finansial & Risiko</span>
+                                        <span class="text-gold font-bold">90%</span>
+                                    </div>
+                                    <div class="w-full bg-obsidian-deep rounded-full h-2.5 border border-slate-800">
+                                        <div class="bg-gradient-to-r from-gold-dark to-gold h-2.5 rounded-full w-[90%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-obsidian-card p-4 rounded-xl border border-gold/20 flex items-start gap-3 mt-4">
+                                <i data-lucide="award" class="w-5 h-5 text-gold shrink-0 mt-0.5"></i>
+                                <p class="text-xs text-slate-300 leading-relaxed italic" data-i18n="hero-quote">
+                                    "Navigasi strategis dari PT Jiaxin Consultant memberikan keunggulan kompetitif yang terukur dalam akuisisi bisnis kami."
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ABOUT US / PROFIL PERUSAHAAN -->
+        <section id="about" class="py-24 px-6 relative bg-obsidian-card/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    <div class="md:col-span-6 space-y-6">
+                        <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="about-subtitle">PROFIL PERUSAHAAN</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight" data-i18n="about-title">
+                            Keunggulan Penasihat Terpercaya untuk Pertumbuhan Korporasi Berkelanjutan
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed font-light text-sm sm:text-base" data-i18n="about-desc-1">
+                            **PT Jiaxin Consultant** berdiri sebagai firma penasihat manajemen & bisnis independen yang didedikasikan untuk membantu perusahaan multinasional, konglomerasi lokal, dan investor institusional dalam menghadapi dinamika pasar yang kompleks.
+                        </p>
+                        <p class="text-slate-300 leading-relaxed font-light text-sm sm:text-base" data-i18n="about-desc-2">
+                            Dengan spesialisasi tinggi dalam jembatan investasi dan penetrasi pasar Asia, khususnya ekosistem bisnis China-Indonesia, kami menggabungkan analisis intelijen bisnis mutakhir dengan kepatuhan hukum yang solid.
+                        </p>
+                    </div>
+
+                    <div class="md:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl space-y-3 border-gold/20 hover:border-gold/40 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
+                                <i data-lucide="compass" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-white" data-i18n="about-visi-title">Visi Strategis</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="about-visi-desc">
+                                Menjadi firma konsultan bisnis berkelas dunia yang paling tepercaya di Asia Tenggara dalam mendorong transformasi korporasi bernilai tinggi.
+                            </p>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl space-y-3 border-gold/20 hover:border-gold/40 transition-all">
+                            <div class="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
+                                <i data-lucide="target" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold text-white" data-i18n="about-misi-title">Misi Utama</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="about-misi-desc">
+                                Menghadirkan solusi eksekusi presisi, optimasi struktur modal, serta perlindungan tata kelola untuk kepemimpinan pasar yang tangguh.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Values -->
+                <div class="pt-6">
+                    <h3 class="text-center font-serif text-2xl font-bold text-white mb-10" data-i18n="values-heading">Nilai-Nilai Utama PT Jiaxin Consultant</h3>
+                    <div class="grid sm:grid-cols-3 gap-8">
+                        <div class="glass-panel p-8 rounded-2xl text-center space-y-4 hover:border-gold/40 transition-all group">
+                            <div class="w-14 h-14 mx-auto rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                                <i data-lucide="shield" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="font-serif text-xl font-bold text-white" data-i18n="val-1-title">Kerahasiaan & Integritas</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="val-1-desc">
+                                Perlindungan informasi strategis klien dengan standar kerahasiaan paling ketat dan transparansi etika kerja.
+                            </p>
+                        </div>
+
+                        <div class="glass-panel p-8 rounded-2xl text-center space-y-4 hover:border-gold/40 transition-all group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                                <i data-lucide="award" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="font-serif text-xl font-bold text-white" data-i18n="val-2-title">Presisi Eksekusi</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="val-2-desc">
+                                Pendekatan analitis berbasis data empiris untuk memastikan setiap rekomendasi dapat dieksekusi secara nyata.
+                            </p>
+                        </div>
+
+                        <div class="glass-panel p-8 rounded-2xl text-center space-y-4 hover:border-gold/40 transition-all group">
+                            <div class="w-14 h-14 mx-auto rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:scale-110 transition-transform">
+                                <i data-lucide="globe-2" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="font-serif text-xl font-bold text-white" data-i18n="val-3-title">Wawasan Global</h4>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="val-3-desc">
+                                Memadukan kearifan lokal pasar Indonesia dengan dinamika ekonomi internasional dan jaringan mitra Asia.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LAYANAN UNGGULAN -->
+        <section id="services" class="py-24 px-6 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center max-w-3xl mx-auto space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="services-subtitle">LAYANAN UNGGULAN</span>
+                    <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white" data-i18n="services-title">Solusi Strategis & Manajemen Berkelas</h2>
+                    <p class="text-slate-400 text-sm sm:text-base font-light" data-i18n="services-desc">
+                        Layanan konsultasi yang dikustomisasi khusus untuk memenuhi skala bisnis eksekutif dan proyek korporasi strategis.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service 1 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s1-title">Konsultasi Strategi Bisnis</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s1-desc">
+                                Formulasi arah strategis korporasi, studi kelayakan proyek skala besar, analisis penetrasi pasar baru, dan ekspansi model bisnis.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Corporate Long-term Planning</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Feasibility & Feasible Study</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Business Model Transformation</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="building-2" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s2-title">Tata Kelola Korporasi (GCG)</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s2-desc">
+                                Penerapan Good Corporate Governance, penyusunan SOP eksekutif, restrukturisasi hierarki organisasi, dan audit kepatuhan internal.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> GCG Framework & Implementation</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Executive SOP Standardisation</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Compliance Audit</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="landmark" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s3-title">Navigasi Pasar Asia & China</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s3-desc">
+                                Pendampingan lintas batas untuk perusahaan China yang berinvestasi di Indonesia atau perusahaan Indonesia yang membangun kemitraan Asia.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Cross-Border Inbound/Outbound</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Joint Venture Structuring</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Local Regulatory Compliance</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s4-title">Manajemen Risiko Korporasi</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s4-desc">
+                                Pemetaan risiko operasional, mitigasi krisis finansial, audit legalitas proyek, serta skenario penanganan ketidakpastian ekonomi.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Risk Assessment Audit</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Crisis Mitigation Plan</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Operational Contingency</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="pie-chart" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s5-title">Restrukturisasi Finansial</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s5-desc">
+                                Optimasi struktur modal, re-strukturisasi utang perusahaan, penilaian aset korporasi (corporate valuation), serta kesiapan aksi M&A.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Capital Structure Advisory</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> M&A Preparation</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Asset Valuation Audit</li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 6 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 hover:border-gold/60 transition-all duration-300 hover:-translate-y-2 group flex flex-col justify-between">
+                        <div class="space-y-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-obsidian transition-colors">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="font-serif text-xl font-bold text-white group-hover:text-gold transition-colors" data-i18n="s6-title">Akselerasi & Digitalisasi</h3>
+                            <p class="text-xs text-slate-400 leading-relaxed" data-i18n="s6-desc">
+                                Integrasi teknologi enterprise, adopsi analitik data untuk pengambil keputusan eksekutif, dan efisiensi rantai pasok digital.
+                            </p>
+                        </div>
+                        <ul class="text-xs text-slate-300 space-y-2.5 border-t border-slate-800/80 pt-5">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Enterprise Tech Integration</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Executive BI Dashboard</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check-circle" class="w-4 h-4 text-gold shrink-0"></i> Supply Chain Modernisation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WHY CHOOSE US & COUNTER STATS -->
+        <section id="why-us" class="py-24 px-6 bg-obsidian-card/50 border-y border-slate-800/80 relative">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="grid md:grid-cols-12 gap-12 items-center">
+                    <div class="md:col-span-6 space-y-6">
+                        <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="why-subtitle">MENGAPA PT JIAXIN CONSULTANT</span>
+                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white leading-tight" data-i18n="why-title">
+                            Pendampingan Eksekutif Berstandar Tinggi dengan Hasil Nyata
+                        </h2>
+                        <p class="text-slate-300 leading-relaxed font-light text-sm sm:text-base" data-i18n="why-desc">
+                            Kami tidak sekadar membuat rekomendasi di atas kertas. Tim Partner kami terlibat aktif dalam mendampingi eksekusi setiap tahap keputusaan bisnis penting Anda.
+                        </p>
+
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
+                                    <i data-lucide="users" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold text-sm" data-i18n="why-f1-title">Tim Konsultan Senior Lintas Disiplin</h4>
+                                    <p class="text-xs text-slate-400 mt-1" data-i18n="why-f1-desc">Dipimpin oleh para ahli strategis dengan riwayat kepemimpinan di korporasi Asia.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-9 h-9 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
+                                    <i data-lucide="network" class="w-4 h-4"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold text-sm" data-i18n="why-f2-title">Jaringan Strategis Lintas Negara</h4>
+                                    <p class="text-xs text-slate-400 mt-1" data-i18n="why-f2-desc">Akses langsung ke jaringan bisnis, asosiasi industri, dan mitra keuangan regional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Counters Grid -->
+                    <div class="md:col-span-6 grid grid-cols-2 gap-6">
+                        <div class="glass-panel p-8 rounded-3xl border-gold/20 text-center space-y-2 gold-glow">
+                            <div class="font-serif text-4xl sm:text-5xl font-bold text-gold" id="counter-projects">0</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-300 font-medium" data-i18n="cnt-1">Proyek Strategis Selesai</div>
+                        </div>
+                        <div class="glass-panel p-8 rounded-3xl border-gold/20 text-center space-y-2 gold-glow">
+                            <div class="font-serif text-4xl sm:text-5xl font-bold text-gold" id="counter-rate">0</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-300 font-medium" data-i18n="cnt-2">Tingkat Retensi Klien</div>
+                        </div>
+                        <div class="glass-panel p-8 rounded-3xl border-gold/20 text-center space-y-2 gold-glow">
+                            <div class="font-serif text-4xl sm:text-5xl font-bold text-gold" id="counter-advisory">0</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-300 font-medium" data-i18n="cnt-3">Aset Dalam Penasihatan (Triliun)</div>
+                        </div>
+                        <div class="glass-panel p-8 rounded-3xl border-gold/20 text-center space-y-2 gold-glow">
+                            <div class="font-serif text-4xl sm:text-5xl font-bold text-gold" id="counter-network">0</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-300 font-medium" data-i18n="cnt-4">Mitra Institusi Regional</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE FEATURE: BUSINESS READINESS INDEX CALCULATOR -->
+        <section id="calculator" class="py-24 px-6 relative">
+            <div class="max-w-5xl mx-auto space-y-12">
+                <div class="text-center space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="calc-subtitle">INTERACTIVE ASSESSMENT</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white" data-i18n="calc-title">Kalkulator Indeks Kesiapan Bisnis</h2>
+                    <p class="text-slate-400 font-light max-w-2xl mx-auto text-sm" data-i18n="calc-desc">
+                        Ukur tingkat ketahanan operasional, kecukupan tata kelola, dan potensi risiko sebelum melangkah ke tahap ekspansi atau investasi baru.
+                    </p>
+                </div>
+
+                <div class="glass-panel rounded-3xl p-8 sm:p-12 gold-glow border-gold/30 space-y-8">
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <!-- Inputs -->
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2" data-i18n="calc-lbl-revenue">
+                                    Skala Omset Tahunan (IDR)
+                                </label>
+                                <select id="calc-revenue" class="w-full bg-obsidian-card border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:border-gold focus:outline-none transition-colors">
+                                    <option value="1">Di bawah 15 Miliar</option>
+                                    <option value="2" selected>15 Miliar - 100 Miliar</option>
+                                    <option value="3">100 Miliar - 500 Miliar</option>
+                                    <option value="4">Di atas 500 Miliar</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2" data-i18n="calc-lbl-digital">
+                                    Tingkat Digitalisasi & Sistem SOP
+                                </label>
+                                <input type="range" id="calc-digital" min="1" max="10" value="6" class="w-full accent-gold bg-slate-800 rounded-lg cursor-pointer">
+                                <div class="flex justify-between text-[11px] text-slate-400 mt-1.5">
+                                    <span>Manual (1)</span>
+                                    <span id="digital-val" class="text-gold font-bold">Level 6</span>
+                                    <span>Fully Automated (10)</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2" data-i18n="calc-lbl-risk">
+                                    Sistem Manajemen Risiko & Kepatuhan GCG
+                                </label>
+                                <div class="grid grid-cols-3 gap-3">
+                                    <button type="button" data-risk="1" class="risk-btn px-3 py-2.5 rounded-xl text-xs border border-slate-700 bg-obsidian text-slate-300 hover:border-gold transition-all">Dasar</button>
+                                    <button type="button" data-risk="2" class="risk-btn active px-3 py-2.5 rounded-xl text-xs border border-gold bg-gold/10 text-gold font-bold transition-all">Standard</button>
+                                    <button type="button" data-risk="3" class="risk-btn px-3 py-2.5 rounded-xl text-xs border border-slate-700 bg-obsidian text-slate-300 hover:border-gold transition-all">Advanced</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Output Result Card -->
+                        <div class="bg-obsidian-card rounded-2xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between space-y-6">
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 uppercase tracking-wider" data-i18n="calc-result-lbl">Skor Kesiapan Strategis</span>
+                                    <span id="score-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">Moderate Ready</span>
+                                </div>
+
+                                <div class="flex items-baseline gap-2">
+                                    <span id="calc-score" class="font-serif text-5xl font-bold text-white">76</span>
+                                    <span class="text-slate-400 font-medium">/ 100</span>
+                                </div>
+
+                                <div class="w-full bg-slate-800 rounded-full h-3">
+                                    <div id="score-bar" class="bg-gradient-to-r from-gold-dark to-gold h-3 rounded-full transition-all duration-500 w-[76%]"></div>
+                                </div>
+
+                                <p id="calc-analysis" class="text-xs text-slate-300 leading-relaxed pt-2" data-i18n="calc-analysis-text">
+                                    Bisnis Anda berada dalam posisi tumbuh yang baik. Namun, penguatan sistem mitigasi risiko dan otomatisasi SOP disarankan sebelum melakukan pendanaan external atau akuisisi.
+                                </p>
+                            </div>
+
+                            <a href="#booking" class="gold-button text-obsidian text-center font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl block shadow-md" data-i18n="calc-cta">
+                                Dapatkan Audit Diagnosis Lengkap
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TESTIMONIALS -->
+        <section id="testimonials" class="py-24 px-6 bg-obsidian-card/40 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto space-y-16">
+                <div class="text-center space-y-4">
+                    <span class="text-xs uppercase tracking-widest text-gold font-semibold" data-i18n="testi-subtitle">TESTIMONI KLIEN</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white" data-i18n="testi-title">Dipercaya Oleh Jajaran Eksekutif</h2>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Testi 1 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border-slate-800 hover:border-gold/40 transition-all">
+                        <div class="space-y-4">
+                            <div class="flex text-gold gap-1">
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed" data-i18n="t1-quote">
+                                "PT Jiaxin Consultant memberikan kejelasan hukum dan strategi yang tepat dalam joint venture internasional kami bernilai puluhan juta dolar. Pendampingan yang sangat profesional."
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-bold text-gold font-serif">
+                                HW
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Hendra Wijaya</div>
+                                <div class="text-xs text-slate-400">Direktur Utama, PT Nusantara Holding</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testi 2 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border-slate-800 hover:border-gold/40 transition-all">
+                        <div class="space-y-4">
+                            <div class="flex text-gold gap-1">
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed" data-i18n="t2-quote">
+                                "Analisis mitigasi risiko dan restrukturisasi finansial dari tim Jiaxin telah melindungi grup kami dari ketidakpastian pasar secara efektif."
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-bold text-gold font-serif">
+                                LZ
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Lin Zhiming</div>
+                                <div class="text-xs text-slate-400">Chief Investment Officer, Asia Pacific Resources</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testi 3 -->
+                    <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border-slate-800 hover:border-gold/40 transition-all">
+                        <div class="space-y-4">
+                            <div class="flex text-gold gap-1">
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                                <i data-lucide="star" class="w-4 h-4 fill-gold"></i>
+                            </div>
+                            <p class="text-xs sm:text-sm text-slate-300 italic leading-relaxed" data-i18n="t3-quote">
+                                "Efisiensi tata kelola yang dirumuskan oleh Jiaxin Consultant berhasil menaikkan EBITDA korporasi kami sebesar 31% dalam 18 bulan."
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800/80 flex items-center gap-4">
+                            <div class="w-10 h-10 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center font-bold text-gold font-serif">
+                                BS
+                            </div>
+                            <div>
+                                <div class="text-sm font-bold text-white">Bambang Sastrowardoyo</div>
+                                <div class="text-xs text-slate-400">Komisaris, PT Synergy Capital</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. FORM PEMESANAN KONSULTASI PRIVAT (BOOKING) -->
+        
+
+                <div class="grid lg:grid-cols-12 gap-12 items-start">
+                    <!-- Office Information -->
+                    <div class="lg:col-span-5 space-y-8 glass-panel p-8 sm:p-10 rounded-3xl border-gold/20">
+                        <h3 class="font-serif text-2xl font-bold text-white" data-i18n="office-title">Kantor Utama</h3>
+                        
+                        <div class="space-y-6 text-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-semibold" data-i18n="off-addr-title">Alamat SCBD</div>
+                                    <div class="text-slate-400 text-xs mt-1 leading-relaxed">
+                                        Jiaxin Executive Tower, Lantai 38, SCBD Lot 11A, Jl. Jend. Sudirman Kav. 52-53, Jakarta Selatan 12190
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shrink-0">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-semibold" data-i18n="off-email-title">Email Resmi</div>
+                                    <div class="text-slate-400 text-xs mt-1">advisory@jiaxinconsultant.co.id</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center text-gold shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <div class="text-white font-semibold" data-i18n="off-phone-title">Layanan Eksekutif</div>
+                                    <div class="text-slate-400 text-xs mt-1">+62 (21) 5088-9988 / +62 811-998-888</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-800/80">
+                            <div class="text-xs text-slate-400 mb-2" data-i18n="off-hours-lbl">Waktu Operasional Konsultasi:</div>
+                            <div class="text-xs text-slate-300 font-medium space-y-1">
+                                <div>Senin - Jumat: 08:30 - 18:00 WIB</div>
+                                <div>Sesi Privat Spesial: Berdasarkan Janji Temu</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Booking Form & Slot Selector -->
+                   
+
+                            
+                                    
+                            </div>
+
+                            <!-- Date/Time Slot Picker Visual -->
+                            
+                
+
+    <!-- FOOTER -->
+  
+                    <div>
+                        <span class="font-serif font-bold text-white tracking-widest text-base">PT JIAXIN CONSULTANT</span>
+                        <p class="text-xs text-slate-500 mt-0.5">Premier Strategic Advisory & Corporate Management Solutions</p>
+                    </div>
+                </div>
+
+                <div class="md:col-span-6 flex md:justify-end gap-6 text-xs text-slate-400">
+                    <a href="#" class="hover:text-gold transition-colors" data-i18n="ft-privacy">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-gold transition-colors" data-i18n="ft-terms">Syarat & Ketentuan</a>
+                    <a href="#" class="hover:text-gold transition-colors" data-i18n="ft-nda">Kerahasiaan NDA</a>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-900 pt-6 text-center text-xs text-slate-600">
+                <p>© 2026 PT Jiaxin Consultant. All Rights Reserved. Designed for Executive Excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SUCCESS MODAL POPUP -->
+    <div id="success-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-6">
+        <div class="glass-panel max-w-md w-full rounded-3xl p-8 text-center space-y-6 gold-glow border-gold/40">
+            <div class="w-16 h-16 bg-gold/20 border border-gold rounded-full flex items-center justify-center text-gold mx-auto">
+                <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+            </div>
+            <div class="space-y-2">
+                <h3 class="font-serif text-2xl font-bold text-white" data-i18n="m-title">Permintaan Terkirim</h3>
+                <p class="text-xs text-slate-300 leading-relaxed" data-i18n="m-desc">
+                    Terima kasih telah menghubungi PT Jiaxin Consultant. Tim Senior Partner kami akan mengonfirmasi reservasi sesi konsultasi privat Anda dalam waktu 1x24 jam kerja.
+                </p>
+            </div>
+            <button id="close-modal" class="gold-button w-full text-obsidian font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl">
+                Tutup Window
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dual Language Dictionary Object
+        const i18n = {
+            id: {
+                "nav-about": "Tentang Kami",
+                "nav-services": "Layanan",
+                "nav-why": "Keunggulan",
+                "nav-calculator": "Kesiapan Bisnis",
+                "nav-testimonials": "Testimoni",
+                "nav-cta": "Konsultasi Privat",
+                
+                "hero-badge": "PT JIAXIN CONSULTANT • STRATEGIC ADVISORY",
+                "hero-title-1": "Arah Strategis Berkelas untuk",
+                "hero-title-2": "Akselerasi & Kepemimpinan Pasar",
+                "hero-desc": "PT Jiaxin Consultant menghadirkan pendampingan penasihat strategis kelas atas untuk korporasi, investor eksekutif, dan ekspansi lintas negara. Kami merancang presisi pertumbuhan dan mitigasi risiko komprehensif.",
+                "hero-btn-primary": "Mulai Konsultasi Privat",
+                "hero-btn-secondary": "Jelajahi Layanan",
+                "stat-1": "Restrukturisasi Aset",
+                "stat-2": "Tingkat Kepuasan Klien",
+                "stat-3": "Pengalaman Lintas Negara",
+                "hero-quote": "\"Navigasi strategis dari PT Jiaxin Consultant memberikan keunggulan kompetitif yang terukur dalam akuisisi bisnis kami.\"",
+
+                "about-subtitle": "PROFIL PERUSAHAAN",
+                "about-title": "Keunggulan Penasihat Terpercaya untuk Pertumbuhan Korporasi Berkelanjutan",
+                "about-desc-1": "PT Jiaxin Consultant berdiri sebagai firma penasihat manajemen & bisnis independen yang didedikasikan untuk membantu perusahaan multinasional, konglomerasi lokal, dan investor institusional dalam menghadapi dinamika pasar yang kompleks.",
+                "about-desc-2": "Dengan spesialisasi tinggi dalam jembatan investasi dan penetrasi pasar Asia, khususnya ekosistem bisnis China-Indonesia, kami menggabungkan analisis intelijen bisnis mutakhir dengan kepatuhan hukum yang solid.",
+                "about-visi-title": "Visi Strategis",
+                "about-visi-desc": "Menjadi firma konsultan bisnis berkelas dunia yang paling tepercaya di Asia Tenggara dalam mendorong transformasi korporasi bernilai tinggi.",
+                "about-misi-title": "Misi Utama",
+                "about-misi-desc": "Menghadirkan solusi eksekusi presisi, optimasi struktur modal, serta perlindungan tata kelola untuk kepemimpinan pasar yang tangguh.",
+                "values-heading": "Nilai-Nilai Utama PT Jiaxin Consultant",
+                "val-1-title": "Kerahasiaan & Integritas",
+                "val-1-desc": "Perhitungan kerahasiaan informasi strategis klien dengan standar paling ketat dan transparansi etika kerja.",
+                "val-2-title": "Presisi Eksekusi",
+                "val-2-desc": "Pendekatan analitis berbasis data empiris untuk memastikan setiap rekomendasi dapat dieksekusi secara nyata.",
+                "val-3-title": "Wawasan Global",
+                "val-3-desc": "Memadukan kearifan lokal pasar Indonesia dengan dinamika ekonomi internasional dan jaringan mitra Asia.",
+
+                "services-subtitle": "LAYANAN UNGGULAN",
+                "services-title": "Solusi Strategis & Manajemen Berkelas",
+                "services-desc": "Layanan konsultasi yang dikustomisasi khusus untuk memenuhi skala bisnis eksekutif dan proyek korporasi strategis.",
+                "s1-title": "Konsultasi Strategi Bisnis",
+                "s1-desc": "Formulasi arah strategis korporasi, studi kelayakan proyek skala besar, analisis penetrasi pasar baru, dan ekspansi model bisnis.",
+                "s2-title": "Tata Kelola Korporasi (GCG)",
+                "s2-desc": "Penerapan Good Corporate Governance, penyusunan SOP eksekutif, restrukturisasi hierarki organisasi, dan audit kepatuhan internal.",
+                "s3-title": "Navigasi Pasar Asia & China",
+                "s3-desc": "Pendampingan lintas batas untuk perusahaan China yang berinvestasi di Indonesia atau perusahaan Indonesia yang membangun kemitraan Asia.",
+                "s4-title": "Manajemen Risiko Korporasi",
+                "s4-desc": "Pemetaan risiko operasional, mitigasi krisis finansial, audit legalitas proyek, serta skenario penanganan ketidakpastian ekonomi.",
+                "s5-title": "Restrukturisasi Finansial",
+                "s5-desc": "Optimasi struktur modal, re-strukturisasi utang perusahaan, penilaian aset korporasi (corporate valuation), serta kesiapan aksi M&A.",
+                "s6-title": "Akselerasi & Digitalisasi",
+                "s6-desc": "Integrasi teknologi enterprise, adopsi analitik data untuk pengambil keputusan eksekutif, dan efisiensi rantai pasok digital.",
+
+                "why-subtitle": "MENGAPA PT JIAXIN CONSULTANT",
+                "why-title": "Pendampingan Eksekutif Berstandar Tinggi dengan Hasil Nyata",
+                "why-desc": "Kami tidak sekadar membuat rekomendasi di atas kertas. Tim Partner kami terlibat aktif dalam mendampingi eksekusi setiap tahap keputusan bisnis penting Anda.",
+                "why-f1-title": "Tim Konsultan Senior Lintas Disiplin",
+                "why-f1-desc": "Dipimpin oleh para ahli strategis dengan riwayat kepemimpinan di korporasi Asia.",
+                "why-f2-title": "Jaringan Strategis Lintas Negara",
+                "why-f2-desc": "Akses langsung ke jaringan bisnis, asosiasi industri, dan mitra keuangan regional.",
+                "cnt-1": "Proyek Strategis Selesai",
+                "cnt-2": "Tingkat Retensi Klien",
+                "cnt-3": "Aset Dalam Penasihatan (Triliun)",
+                "cnt-4": "Mitra Institusi Regional",
+
+                "calc-subtitle": "INTERACTIVE ASSESSMENT",
+                "calc-title": "Kalkulator Indeks Kesiapan Bisnis",
+                "calc-desc": "Ukur tingkat ketahanan operasional, kecukupan tata kelola, dan potensi risiko sebelum melangkah ke tahap ekspansi atau investasi baru.",
+                "calc-lbl-revenue": "Skala Omset Tahunan (IDR)",
+                "calc-lbl-digital": "Tingkat Digitalisasi & Sistem SOP",
+                "calc-lbl-risk": "Sistem Manajemen Risiko & Kepatuhan GCG",
+                "calc-result-lbl": "Skor Kesiapan Strategis",
+                "calc-cta": "Dapatkan Audit Diagnosis Lengkap",
+
+                "testi-subtitle": "TESTIMONI KLIEN",
+                "testi-title": "Dipercaya Oleh Jajaran Eksekutif",
+                "t1-quote": "\"PT Jiaxin Consultant memberikan kejelasan hukum dan strategi yang tepat dalam joint venture internasional kami bernilai puluhan juta dolar. Pendampingan yang sangat profesional.\"",
+                "t2-quote": "\"Analisis mitigasi risiko dan restrukturisasi finansial dari tim Jiaxin telah melindungi grup kami dari ketidakpastian pasar secara efektif.\"",
+                "t3-quote": "\"Efisiensi tata kelola yang dirumuskan oleh Jiaxin Consultant berhasil menaikkan EBITDA korporasi kami sebesar 31% dalam 18 bulan.\"",
+
+                "book-subtitle": "JADWALKAN DISKUSI PRIVAT",
+                "book-title": "Konsultasi Eksklusif Bersama Partner",
+                "book-desc": "Sampaikan profil singkat kebutuhan bisnis Anda untuk mendapatkan reservasi sesi diskusi privat dengan Partner Senior kami.",
+                "office-title": "Kantor Utama",
+                "off-addr-title": "Alamat SCBD",
+                "off-email-title": "Email Resmi",
+                "off-phone-title": "Layanan Eksekutif",
+                "off-hours-lbl": "Waktu Operasional Konsultasi:",
+                "f-name": "Nama Lengkap *",
+                "f-email": "Email Perusahaan *",
+                "f-company": "Perusahaan / Jabatan",
+                "f-service": "Layanan Utama",
+                "f-slot-lbl": "Pilih Slot Sesi Konsultasi",
+                "f-notes": "Ringkasan Kebutuhan Strategis",
+                "f-submit": "Konfirmasi Permintaan Konsultasi",
+
+                "ft-privacy": "Kebijakan Privasi",
+                "ft-terms": "Syarat & Ketentuan",
+                "ft-nda": "Kerahasiaan NDA",
+
+                "m-title": "Permintaan Terkirim",
+                "m-desc": "Terima kasih telah menghubungi PT Jiaxin Consultant. Tim Senior Partner kami akan mengonfirmasi reservasi sesi konsultasi privat Anda dalam waktu 1x24 jam kerja."
+            },
+            cn: {
+                "nav-about": "关于我们",
+                "nav-services": "专业服务",
+                "nav-why": "核心优势",
+                "nav-calculator": "商业准备度",
+                "nav-testimonials": "客户评价",
+                "nav-cta": "预约私享咨询",
+                
+                "hero-badge": "佳信顾问 • 战略咨询与企业管理",
+                "hero-title-1": "卓越的战略指引",
+                "hero-title-2": "加速企业增长与领跑市场",
+                "hero-desc": "PT Jiaxin Consultant 为企业、高级投资人及跨国拓展提供高阶战略顾问服务。我们精准规划增长路径并进行全面风险防控。",
+                "hero-btn-primary": "开启私享战略咨询",
+                "hero-btn-secondary": "探索专业服务",
+                "stat-1": "重组资产规模",
+                "stat-2": "客户满意度",
+                "stat-3": "跨境服务经验",
+                "hero-quote": "“PT Jiaxin Consultant 的战略导航为我们在跨国业务并购中提供了可量化的竞争优势。”",
+
+                "about-subtitle": "公司简介",
+                "about-title": "值得信赖的战略顾问 助力企业可持续增长",
+                "about-desc-1": "PT Jiaxin Consultant 是一家独立的企业与管理咨询公司，致力于协助跨国企业、本土集团及机构投资者应对复杂的市场动态。",
+                "about-desc-2": "我们深耕中印尼及亚洲市场的投资桥梁与市场准入，将前沿的商业情报分析与严谨的法律合规性深度融合。",
+                "about-visi-title": "战略愿景",
+                "about-visi-desc": "成为东南亚最受信赖的国际化商业咨询机构，推动高价值企业的战略转型。",
+                "about-misi-title": "核心使命",
+                "about-misi-desc": "提供精准执行方案、资本结构优化及公司治理保护，铸就稳健的市场领导力。",
+                "values-heading": "佳信顾问核心价值观",
+                "val-1-title": "保密与诚信",
+                "val-1-desc": "以最高标准的保密协议与商业道德，严密保护客户的战略商业信息。",
+                "val-2-title": "精准执行",
+                "val-2-desc": "基于经验数据的分析方法，确保每一项战略建议落地见效。",
+                "val-3-title": "全球视野",
+                "val-3-desc": "融汇印尼本土市场洞察与国际经济动态及亚洲合作伙伴网络。",
+
+                "services-subtitle": "核心服务",
+                "services-title": "高阶战略与企业管理解决方案",
+                "services-desc": "定制化咨询服务，精准契合高管决策与重大战略项目需求。",
+                "s1-title": "商业战略咨询",
+                "s1-desc": "企业长期战略规划、大型项目可行性研究、新市场拓展分析及商业模式升级。",
+                "s2-title": "公司治理 (GCG)",
+                "s2-desc": "良好公司治理架构建立、高管 SOP 制定、组织架构重组及内部合规审计。",
+                "s3-title": "亚洲与中国市场导航",
+                "s3-desc": "为投资印尼的中资企业及建立亚洲伙伴关系的印尼企业提供全方位跨境落地支持。",
+                "s4-title": "企业风险管理",
+                "s4-desc": "运营风险梳理、财务危机化解、项目合法性审计及经济不确定性应对预案。",
+                "s5-title": "财务重组顾问",
+                "s5-desc": "资本结构优化、企业债务重组、企业价值评估 (Valuation) 及并购 (M&A) 准备。",
+                "s6-title": "数字化与加速发展",
+                "s6-desc": "企业级技术集成、高管决策数据分析引入及数字供应链效率提升。",
+
+                "why-subtitle": "为什么选择佳信顾问",
+                "why-title": "高标准高管顾问服务 赋能真实成果",
+                "why-desc": "我们绝非停留于纸上谈兵。我们的合伙人团队全程深度参与，协助您落实关键商业决策的每一步。",
+                "why-f1-title": "跨学科资深顾问团队",
+                "why-f1-desc": "由具备亚洲大型企业高管经验的战略专家领衔。",
+                "why-f2-title": "跨境战略合作网络",
+                "why-f2-desc": "直接对接商业网络、行业协会及区域金融机构合作伙伴。",
+                "cnt-1": "已完成战略项目",
+                "cnt-2": "客户留存率",
+                "cnt-3": "咨询资产规模 (万亿)",
+                "cnt-4": "区域合作机构",
+
+                "calc-subtitle": "互动评估",
+                "calc-title": "商业准备度指数计算器",
+                "calc-desc": "在开启新一轮扩张或投资前，评估您的运营韧性、治理充分度及潜在风险。",
+                "calc-lbl-revenue": "年营业额规模 (印尼盾)",
+                "calc-lbl-digital": "数字化与 SOP 系统成熟度",
+                "calc-lbl-risk": "风险管理与 GCG 合规体系",
+                "calc-result-lbl": "战略准备度得分",
+                "calc-cta": "获取完整诊断评估报告",
+
+                "testi-subtitle": "客户证言",
+                "testi-title": "深受企业高管层信赖",
+                "t1-quote": "“PT Jiaxin Consultant 在我们数千万美元的跨国合资项目中提供了极具前瞻性的法律与战略指引，服务非常专业。”",
+                "t2-quote": "“佳信团队提供的风险化解与财务重组方案，帮助我们集团有效抵御了市场波动风险。”",
+                "t3-quote": "“佳信顾问设计的公司治理优化方案，在18个月内成功将我们企业的 EBITDA 提升了 31%。”",
+
+                "book-subtitle": "预约私享讨论",
+                "book-title": "合伙人专属咨询",
+                "book-desc": "提交您的企业需求概要，预约与佳信高级合伙人的私享战略讨论会。",
+                "office-title": "总部地址",
+                "off-addr-title": "SCBD 商务区地址",
+                "off-email-title": "官方邮箱",
+                "off-phone-title": "高管专线",
+                "off-hours-lbl": "咨询服务时间：",
+                "f-name": "全名 *",
+                "f-email": "企业邮箱 *",
+                "f-company": "公司名称 / 职位",
+                "f-service": "主要需求服务",
+                "f-slot-lbl": "选择咨询时间段",
+                "f-notes": "战略需求概要",
+                "f-submit": "确认预约请求",
+
+                "ft-privacy": "隐私政策",
+                "ft-terms": "条款与条件",
+                "ft-nda": "NDA 保密协议",
+
+                "m-title": "请求已提交",
+                "m-desc": "感谢您联系 PT Jiaxin Consultant。我们的高级合伙人团队将在 1x24 工作小时内与您确认私享咨询会预约。"
+            }
+        };
+
+        // State & Lang Switching Engine
+        let currentLang = 'id';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (i18n[lang] && i18n[lang][key]) {
+                    // Update innerHTML while supporting markdown-style text formatting
+                    let text = i18n[lang][key];
+                    text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    element.innerHTML = text;
+                }
+            });
+
+            // Adjust Font family for Chinese script
+            if (lang === 'cn') {
+                document.body.classList.add('font-cn');
+            } else {
+                document.body.classList.remove('font-cn');
+            }
+        }
+
+        // Toggle Buttons
+        document.getElementById('lang-toggle-btn').addEventListener('click', () => {
+            const newLang = currentLang === 'id' ? 'cn' : 'id';
+            setLanguage(newLang);
+        });
+        document.getElementById('lang-toggle-mobile').addEventListener('click', () => {
+            const newLang = currentLang === 'id' ? 'cn' : 'id';
+            setLanguage(newLang);
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Navbar blur behavior on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 40) {
+                navbar.classList.add('py-2', 'shadow-2xl');
+            } else {
+                navbar.classList.remove('py-2', 'shadow-2xl');
+            }
+        });
+
+        // Animated Counters
+        function animateCounter(id, target, suffix = '', duration = 1800) {
+            const element = document.getElementById(id);
+            if (!element) return;
+            
+            let start = 0;
+            const stepTime = Math.abs(Math.floor(duration / target));
+            
+            const timer = setInterval(() => {
+                start += 1;
+                element.textContent = start + suffix;
+                if (start >= target) {
+                    element.textContent = target + suffix;
+                    clearInterval(timer);
+                }
+            }, Math.max(stepTime, 15));
+        }
+
+        let counterTriggered = false;
+        window.addEventListener('scroll', () => {
+            const counterSection = document.getElementById('why-us');
+            if (!counterSection) return;
+            const rect = counterSection.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && !counterTriggered) {
+                counterTriggered = true;
+                animateCounter('counter-projects', 280, '+');
+                animateCounter('counter-rate', 99, '%');
+                animateCounter('counter-advisory', 15, 'T+');
+                animateCounter('counter-network', 45, '+');
+            }
+        });
+
+        // Interactive Readiness Assessment Calculator Logic
+        const revenueSelect = document.getElementById('calc-revenue');
+        const digitalInput = document.getElementById('calc-digital');
+        const digitalVal = document.getElementById('digital-val');
+        const riskBtns = document.querySelectorAll('.risk-btn');
+        
+        const scoreDisplay = document.getElementById('calc-score');
+        const scoreBar = document.getElementById('score-bar');
+        const scoreBadge = document.getElementById('score-badge');
+        const calcAnalysis = document.getElementById('calc-analysis');
+
+        let selectedRisk = 2; // Default Standard
+
+        digitalInput.addEventListener('input', (e) => {
+            digitalVal.textContent = `Level ${e.target.value}`;
+            calculateScore();
+        });
+
+        revenueSelect.addEventListener('change', calculateScore);
+
+        riskBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                riskBtns.forEach(b => {
+                    b.classList.remove('active', 'border-gold', 'bg-gold/10', 'text-gold', 'font-bold');
+                    b.classList.add('border-slate-700', 'bg-obsidian', 'text-slate-300');
+                });
+                btn.classList.add('active', 'border-gold', 'bg-gold/10', 'text-gold', 'font-bold');
+                btn.classList.remove('border-slate-700', 'bg-obsidian', 'text-slate-300');
+                selectedRisk = parseInt(btn.getAttribute('data-risk'));
+                calculateScore();
+            });
+        });
+
+        function calculateScore() {
+            const rev = parseInt(revenueSelect.value);
+            const digital = parseInt(digitalInput.value);
+            
+            let total = (rev * 11) + (digital * 5.2) + (selectedRisk * 11.5);
+            if (total > 99) total = 98;
+            if (total < 32) total = 35;
+
+            scoreDisplay.textContent = Math.round(total);
+            scoreBar.style.width = `${total}%`;
+
+            if (total >= 80) {
+                scoreBadge.textContent = currentLang === 'cn' ? '高度准备 (High Ready)' : 'High Ready';
+                scoreBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+                calcAnalysis.textContent = currentLang === 'cn' 
+                    ? '您的企业处于极佳的扩展状态，具备承接大规模跨境投资与并购的坚实基础。'
+                    : 'Perusahaan Anda berada dalam posisi prima untuk ekspansi strategis, M&A, atau akselerasi permodalan skala besar.';
+            } else if (total >= 60) {
+                scoreBadge.textContent = currentLang === 'cn' ? '中度准备 (Moderate)' : 'Moderate Ready';
+                scoreBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30';
+                calcAnalysis.textContent = currentLang === 'cn'
+                    ? '企业具备良好增长基础。建议在进行外部融资或并购前，进一步强化风险防控与 SOP 自动化。'
+                    : 'Bisnis Anda memiliki fondasi yang baik. Namun, penguatan sistem mitigasi risiko dan otomatisasi SOP disarankan sebelum melakukan pendanaan external atau akuisisi.';
+            } else {
+                scoreBadge.textContent = currentLang === 'cn' ? '需优化 (Needs Optimization)' : 'Optimization Needed';
+                scoreBadge.className = 'px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30';
+                calcAnalysis.textContent = currentLang === 'cn'
+                    ? '建议在进行大规模资本动作前，先进行内部治理梳理与风险化解重组。'
+                    : 'Diperlukan restrukturisasi internal dan mitigasi risiko tata kelola secara menyeluruh sebelum melakukan investasi atau integrasi baru.';
+            }
+        }
+
+        // Date Slot Picker Selection
+        const dateSlots = document.querySelectorAll('.date-slot');
+        dateSlots.forEach(slot => {
+            slot.addEventListener('click', () => {
+                dateSlots.forEach(s => {
+                    s.classList.remove('active', 'border-gold', 'bg-gold/10', 'text-gold');
+                    s.classList.add('border-slate-700', 'bg-obsidian', 'text-slate-300');
+                });
+                slot.classList.add('active', 'border-gold', 'bg-gold/10', 'text-gold');
+                slot.classList.remove('border-slate-700', 'bg-obsidian', 'text-slate-300');
+            });
+        });
+
+        // Consultation Form Modal Feedback
+        const consultForm = document.getElementById('consultation-form');
+        const successModal = document.getElementById('success-modal');
+        const closeModal = document.getElementById('close-modal');
+
+        if (consultForm && successModal) {
+            consultForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                successModal.classList.remove('hidden');
+            });
+        }
+
+        if (closeModal && successModal) {
+            closeModal.addEventListener('click', () => {
+                successModal.classList.add('hidden');
+                if (consultForm) consultForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
